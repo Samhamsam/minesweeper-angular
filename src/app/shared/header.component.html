@@ -1,0 +1,59 @@
+<header>
+
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="active">
+      <img src="/assets/flag.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+      ngMineSweeper
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/game']">Game</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/instructions']">Instructions</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/about']">About</a>
+        </li>
+
+        <li class="form-inline navbar-toggler-right" id="login">
+
+          <button *ngIf="!currentUser || !currentUser.isLoggedIn" class="btn btn-sm btn-outline-primary" (click)="onLogin()">
+            <a class="nav-link">Login</a>
+          </button>
+
+          <div *ngIf="currentUser && currentUser.isLoggedIn">
+            <img id="user-photo" src="{{ currentUser.photoURL }}" class="rounded float-left">
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary">
+                {{ currentUser.name }}
+              </button>
+              <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" (click)="onLogout()">Logout</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item disabled">See stats</a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </nav>
+
+</header>
